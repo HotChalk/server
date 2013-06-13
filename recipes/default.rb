@@ -22,7 +22,7 @@ include_recipe "aws"
 include_recipe "apt"
 
 # Default packages to be installed
-default_packages = %w{ curl unzip mdadm }
+default_packages = %w{ curl unzip mdadm vim }
 
 default_packages.each { |pkg| package pkg }
 
