@@ -8,7 +8,7 @@ version          "0.1.1"
 
 depends "apt", ">= 1.10.0"
 depends "aws", ">= 0.101.0"
-depends "swap", ">= 0.2.0"
+depends "swap", "0.2.0"
 depends "users", ">= 1.5.0"
 depends "sudo", ">= 2.1.2"
 
