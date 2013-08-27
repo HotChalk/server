@@ -13,3 +13,5 @@ default[:server][:domain]                      = "local"
 default[:server][:hostname]                    = "server"
 
 default[:server][:swap][:size]                 = 2048
+
+default[:server][:users][:data_bag]            = "users"

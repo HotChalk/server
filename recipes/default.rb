@@ -16,8 +16,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-include_recipe "users::sysadmins"
 include_recipe "aws"
 include_recipe "apt"
 
@@ -25,6 +23,12 @@ include_recipe "apt"
 default_packages = %w{ curl unzip mdadm vim }
 
 default_packages.each { |pkg| package pkg }
+
+users_manage "sysadmin" do
+  group_id 2300
+  data_bag node[:server][:users][:data_bag]
+  action [ :remove, :create ]
+end
 
 sudo "sysadmin" do
     user "%sysadmin"
