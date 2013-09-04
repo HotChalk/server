@@ -18,23 +18,13 @@
 #
 include_recipe "aws"
 include_recipe "apt"
+include_recipe "server::ec2-hostname"
+include_recipe "server::users"
 
 # Default packages to be installed
 default_packages = %w{ curl unzip mdadm vim }
 
 default_packages.each { |pkg| package pkg }
-
-users_manage "sysadmin" do
-  group_id 2300
-  data_bag node[:server][:users][:data_bag]
-  action [ :remove, :create ]
-end
-
-sudo "sysadmin" do
-    user "%sysadmin"
-    runas "ALL"
-    nopasswd true
-end
 
 swap_file "/swap" do
     size node[:server][:swap][:size]
@@ -127,30 +117,4 @@ end
         group "root"
         mode 00755
     end
-end
-
-if is_aws
-  directory "/usr/local/ec2" do
-    owner "root"
-    group "root"
-    mode 00755
-  end
-
-  template "/usr/local/ec2/ec2-set-hostname" do
-    source "ec2-set-hostname.erb"
-    owner "root"
-    group "root"
-    mode 00755
-  end
-
-  execute "set hostname" do
-    command "/usr/local/ec2/ec2-set-hostname"
-  end
-
-  cookbook_file "/etc/rc.local" do
-    source "rc.local"
-    owner "root"
-    group "root"
-    mode 00755
-  end
 end
