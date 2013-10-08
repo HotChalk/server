@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+domain = '<%= node[:server][:domain] %>'
+
+dns = Fog::DNS.new({
+  :provider               => 'AWS',
+  :aws_access_key_id      => '<%= @aws["aws_access_key_id"] %>',
+  :aws_secret_access_key  => '<%= @aws["aws_secret_access_key"] %>'
+})

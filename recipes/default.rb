@@ -38,7 +38,7 @@ end
 
 is_aws = node[:cloud] && node[:cloud][:provider] == "ec2"
 
-if is_aws
+if is_aws && node[:server][:data_volume][:enable]
 
     aws = data_bag_item(node[:aws][:databag_name], node[:aws][:databag_entry])
 
