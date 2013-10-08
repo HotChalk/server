@@ -1,3 +1,4 @@
+default[:server][:data_volume][:enable]        = false
 default[:server][:data_volume][:disk_count]    = 2
 default[:server][:data_volume][:disk_size]     = 10
 default[:server][:data_volume][:raid_level]    = 1
