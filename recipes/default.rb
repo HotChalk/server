@@ -22,7 +22,7 @@ include_recipe "server::ec2-hostname"
 include_recipe "server::users"
 
 # Default packages to be installed
-default_packages = %w{ curl unzip mdadm vim }
+default_packages = %w{ curl unzip mdadm vim xfsprogs }
 
 default_packages.each { |pkg| package pkg }
 
