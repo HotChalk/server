@@ -13,6 +13,6 @@ default[:server][:data_volume][:raid_device]   = "/dev/md0"
 default[:server][:domain]                      = "local"
 default[:server][:hostname]                    = "server"
 
-default[:server][:swap][:size]                 = 2048
+default[:server][:swap][:size]                 = 512
 
 default[:server][:users][:data_bag]            = "users"
