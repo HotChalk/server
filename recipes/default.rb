@@ -22,7 +22,7 @@ include_recipe "server::ec2-hostname"
 include_recipe "server::users"
 
 # Default packages to be installed
-default_packages = %w{ curl unzip mdadm vim }
+default_packages = %w{ curl unzip mdadm vim xfsprogs }
 
 default_packages.each { |pkg| package pkg }
 
@@ -98,7 +98,7 @@ if is_aws && node[:server][:data_volume][:enable]
         end
 
         execute "format data volume" do
-            command "mke2fs -t #{node[:server][:data_volume][:filesystem]} #{node[:server][:data_volume][:system_device]}"
+            command "mkfs.#{node[:server][:data_volume][:filesystem]} #{node[:server][:data_volume][:system_device]}"
             returns [0, 1]
         end
 
