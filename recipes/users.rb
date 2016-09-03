@@ -25,7 +25,7 @@ users_manage "sysadmin" do
 end
 
 sudo "sysadmin" do
-    user "%sysadmin"
+    user "%sysadmins"
     runas "ALL"
     nopasswd true
 end
